@@ -1,0 +1,6 @@
+{
+  "name": "Ingrade AR | WebAR 3D Product Demo",
+  "description": "High-fidelity WebAR product visualization engineered for Ingrade Media (ingrade.io), featuring AR.js marker tracking, interactive 3D inspection studio with exploded views, PBR materials, and real camera augmented reality.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
