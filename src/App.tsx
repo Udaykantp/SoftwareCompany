@@ -57,6 +57,7 @@ export default function App() {
           setCardModalTab(tab || 'card');
           setIsCardModalOpen(true);
         }}
+        onOpenContactForm={() => setIsLeadLandingOpen(true)}
       />
 
       {/* Main Studio Workspace */}

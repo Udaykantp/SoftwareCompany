@@ -11,6 +11,7 @@ interface HeaderProps {
   onOpenCodeViewer: () => void;
   onOpenSpecs: () => void;
   onOpenCardModal: (tab?: 'card' | 'leads' | 'scanner') => void;
+  onOpenContactForm?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCodeViewer,
   onOpenSpecs,
   onOpenCardModal,
+  onOpenContactForm,
 }) => {
   return (
     <header className="h-16 px-6 border-b border-neutral-800 bg-neutral-950/90 backdrop-blur-md flex items-center justify-between shrink-0 z-30">
@@ -118,10 +120,26 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="flex items-center gap-2">
         <button
           onClick={() => {
+            if (onOpenContactForm) {
+              onOpenContactForm();
+            } else {
+              onOpenCardModal('card');
+            }
+            sounds.playClick();
+          }}
+          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-neutral-950 bg-gradient-to-r from-[#00D9FF] via-[#1687FF] to-[#00D9FF] hover:brightness-110 active:scale-95 rounded-lg transition-all shadow-md shadow-cyan-500/20 whitespace-nowrap cursor-pointer"
+          title="Exchange Details & Executive Visiting Card for ingrade.io"
+        >
+          <span className="text-xs">🤝</span>
+          <span>Contact Uday</span>
+        </button>
+
+        <button
+          onClick={() => {
             onOpenCardModal('card');
             sounds.playClick();
           }}
-          className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-neutral-950 bg-gradient-to-r from-amber-400 via-cyan-400 to-emerald-400 hover:opacity-95 active:scale-95 rounded-lg transition-all shadow-md shadow-cyan-500/20 whitespace-nowrap"
+          className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold text-white bg-neutral-900 hover:bg-neutral-800 border border-[#00d9ff]/35 hover:border-[#00d9ff] active:scale-95 rounded-lg transition-all shadow-sm whitespace-nowrap"
           title="Meeting Founder Card & Lead Capture QR for ingrade.io"
         >
           <span className="text-xs">👑</span>
